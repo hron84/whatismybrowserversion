@@ -11,6 +11,7 @@ User Agent: <?php echo(htmlspecialchars($_SERVER['HTTP_USER_AGENT'])); ?>
 
 IP address: <?php echo(htmlspecialchars($_SERVER['REMOTE_ADDR'])); ?>
 </textarea>
+		<p>Have an improvement? <a href="https://github.com/janoszen/whatismybrowserversion">Send a pull request on GitHub!</a></p>
 		<script type="text/javascript">
 			document.getElementById('browserinfo').select();
 		</script>
