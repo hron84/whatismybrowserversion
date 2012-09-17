@@ -71,6 +71,10 @@ JavaScript enabled: no
 					browserinfo.innerHTML = browserinfo.innerHTML.replace('JavaScript enabled: no', 'JavaScript enabled: yes');
 					
 					//Browser information
+					browserinfo.innerHTML += 'navigator.appCodeName: ' + navigator.appCodeName + '\n';
+					browserinfo.innerHTML += 'navigator.appName: ' + navigator.appName + '\n';
+					browserinfo.innerHTML += 'navigator.appVersion: ' + navigator.appVersion + '\n';
+					browserinfo.innerHTML += 'navigator.cookieEnabled: ' + navigator.cookieEnabled + '\n';
 					
 					//Events support
 					var events = Array();
