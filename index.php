@@ -171,7 +171,6 @@ JavaScript enabled: no
 			This site has been created to help customer support determine your exact browser and operating system for
 			tracking down bugs. The information you see here is available to any website you visit. We do not store it
 			for any length of time. Have an improvement? <a href="https://github.com/janoszen/whatismybrowserversion">Send a pull request on GitHub!</a></p>
-		<script type="text/javascript" src="./zeroclipboard/ZeroClipboard.js"></script>
 		<script type="text/javascript">
 			browserinfo.focus();
 			browserinfo.select();
