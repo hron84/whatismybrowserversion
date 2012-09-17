@@ -71,6 +71,14 @@ Reverse DNS: <?php echo(htmlspecialchars(gethostbyaddr($_SERVER['REMOTE_ADDR']))
 JavaScript enabled: no
 </textarea>
 				<script type="text/javascript">
+					var ipv4address = '';
+					var ipv4reverse = '';
+					var ipv6address = '';
+					var ipv6reverse = '';
+				</script>
+				<script type="text/javascript" src="http://ipv4.whatismybrowserversion.com/getaddress.php"></script>
+				<script type="text/javascript" src="http://ipv6.whatismybrowserversion.com/getaddress.php"></script>
+				<script type="text/javascript">
 					var browserinfo = document.getElementById('browserinfo');
 					browserinfo.innerHTML = browserinfo.innerHTML.replace('JavaScript enabled: no', 'JavaScript enabled: yes');
 					
@@ -79,6 +87,12 @@ JavaScript enabled: no
 					browserinfo.innerHTML += 'navigator.appName: ' + navigator.appName + '\n';
 					browserinfo.innerHTML += 'navigator.appVersion: ' + navigator.appVersion + '\n';
 					browserinfo.innerHTML += 'navigator.cookieEnabled: ' + navigator.cookieEnabled + '\n';
+					
+					//Connectivity
+					browserinfo.innerHTML += 'IPv4 address: ' + ipv4address + '\n';
+					browserinfo.innerHTML += 'IPv4 reverse: ' + ipv4reverse + '\n';
+					browserinfo.innerHTML += 'IPv6 address: ' + ipv6address + '\n';
+					browserinfo.innerHTML += 'IPv6 reverse: ' + ipv6reverse + '\n';
 					
 					//Events support
 					var events = Array();
