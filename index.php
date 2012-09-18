@@ -30,7 +30,7 @@
 			
 			#textcontainer {
 				position:relative;
-				height:200px;
+				height:360px;
 				border-radius:10px;
 				border:1px solid #cfcfcf;
 				padding:10px;
@@ -61,7 +61,7 @@
 		<p>Please send the following information to the customer support:</p>
 		<div id="textcontainer">
 			<div id="textcontainer2">
-				<textarea id="browserinfo" rows="12">
+				<textarea id="browserinfo" rows="20">
 User Agent: <?php echo(htmlspecialchars($_SERVER['HTTP_USER_AGENT'])); ?>
 
 IP address: <?php echo(htmlspecialchars($_SERVER['REMOTE_ADDR'])); ?>
