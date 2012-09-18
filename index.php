@@ -36,20 +36,21 @@
 				padding:10px;
 				overflow:visible;
 			}
-			
+
 			#textcontainer2 {
 				position:relative;
 				overflow:visible;
 			}
-			
+
 			textarea {
 				border:0;
 				width:100%;
 				overflow:visible;
 				display:block;
 				resize:none;
+				height: 360px;
 			}
-			
+
 			textarea:focus {
 				outline:0;
 			}
@@ -61,15 +62,14 @@
 		<p>Please send the following information to the customer support:</p>
 		<div id="textcontainer">
 			<div id="textcontainer2">
-				<textarea id="browserinfo" rows="20">
+				<textarea id="browserinfo" readonly="readonly">
 User Agent: <?php echo(htmlspecialchars($_SERVER['HTTP_USER_AGENT'])); ?>
 
 IP address: <?php echo(htmlspecialchars($_SERVER['REMOTE_ADDR'])); ?>
 
 Reverse DNS: <?php echo(htmlspecialchars(gethostbyaddr($_SERVER['REMOTE_ADDR']))); ?>
 
-JavaScript enabled: no
-</textarea>
+JavaScript enabled: no</textarea>
 				<script type="text/javascript">
 					var ipv4address = '';
 					var ipv4reverse = '';
@@ -81,12 +81,15 @@ JavaScript enabled: no
 				<script type="text/javascript">
 					var browserinfo = document.getElementById('browserinfo');
 					browserinfo.innerHTML = browserinfo.innerHTML.replace('JavaScript enabled: no', 'JavaScript enabled: yes');
-					
+					browserinfo.innerHTML += "\n";
 					//Browser information
 					browserinfo.innerHTML += 'navigator.appCodeName: ' + navigator.appCodeName + '\n';
 					browserinfo.innerHTML += 'navigator.appName: ' + navigator.appName + '\n';
 					browserinfo.innerHTML += 'navigator.appVersion: ' + navigator.appVersion + '\n';
-					browserinfo.innerHTML += 'navigator.cookieEnabled: ' + navigator.cookieEnabled + '\n';
+					browserinfo.innerHTML += 'navigator.cookieEnabled: ' + (navigator.cookieEnabled ? "yes" : "no") + '\n';
+					
+					ipv6address = ipv6address === "" ? "N/A" : ipv6address;
+					ipv6reverse = ipv6reverse === "" ? "N/A" : ipv6reverse;
 					
 					//Connectivity
 					browserinfo.innerHTML += 'IPv4 address: ' + ipv4address + '\n';
