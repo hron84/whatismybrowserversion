@@ -174,6 +174,29 @@ JavaScript enabled: no</textarea>
 					var jres =deployJava.getJREs();
 					browserinfo.innerHTML += 'Installed Java version(s): ' + jres.join(', ');
 				</script>
+				<script type="text/javascript">
+					// .NET support
+					var netsdks = new Array();
+					var sdkraw = navigator.userAgent.match(/\.NET CLR\s([\d\.]+)/g);
+					if(sdkraw.length > 0) {
+						for(i = 0; i < sdkraw.length; i++) {
+							sdk = sdkraw[i];
+							netsdks.push(sdk.split(' ')[2]);
+						}
+					}
+
+					// .NET 4.0 changed the format of the UA string fingerprint 
+					sdkraw = navigator.userAgent.match(/\.NET[\d+\.A-Z]+/g);
+					if(sdkraw.length > 0) {
+						for(i = 0; i < sdkraw.length; i++) {
+							sdk = sdkraw[i];
+							netsdks.push(sdk.replace(/\.NET/, ""));
+						}
+					}
+					if(netsdks.length > 0) {
+						browserinfo.innerHTML += 'Installed Microsoft .NET framework versions: ' + netsdks.join(', ');
+					}
+				</script>
 			</div>
 		</div>
 		<h2>What is this site?</h2>
