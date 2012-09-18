@@ -134,22 +134,22 @@ JavaScript enabled: no</textarea>
 				<script type="text/javascript" src="http://ipv6.whatismybrowserversion.com/getaddress.php"></script>
 				<script type="text/javascript">
 					var browserinfo = document.getElementById('browserinfo');
-					browserinfo.innerHTML = browserinfo.innerHTML.replace('JavaScript enabled: no', 'JavaScript enabled: yes');
-					browserinfo.innerHTML += "\n";
+					browserinfo.value = browserinfo.value.replace('JavaScript enabled: no', 'JavaScript enabled: yes');
+					browserinfo.value += "\n";
 					//Browser information
-					browserinfo.innerHTML += 'navigator.appCodeName: ' + navigator.appCodeName + '\n';
-					browserinfo.innerHTML += 'navigator.appName: ' + navigator.appName + '\n';
-					browserinfo.innerHTML += 'navigator.appVersion: ' + navigator.appVersion + '\n';
-					browserinfo.innerHTML += 'navigator.cookieEnabled: ' + (navigator.cookieEnabled ? "yes" : "no") + '\n';
+					browserinfo.value += 'navigator.appCodeName: ' + navigator.appCodeName + '\n';
+					browserinfo.value += 'navigator.appName: ' + navigator.appName + '\n';
+					browserinfo.value += 'navigator.appVersion: ' + navigator.appVersion + '\n';
+					browserinfo.value += 'navigator.cookieEnabled: ' + (navigator.cookieEnabled ? "yes" : "no") + '\n';
 					
 					ipv6address = ipv6address === "" ? "N/A" : ipv6address;
 					ipv6reverse = ipv6reverse === "" ? "N/A" : ipv6reverse;
 					
 					//Connectivity
-					browserinfo.innerHTML += 'IPv4 address: ' + ipv4address + '\n';
-					browserinfo.innerHTML += 'IPv4 reverse: ' + ipv4reverse + '\n';
-					browserinfo.innerHTML += 'IPv6 address: ' + ipv6address + '\n';
-					browserinfo.innerHTML += 'IPv6 reverse: ' + ipv6reverse + '\n';
+					browserinfo.value += 'IPv4 address: ' + ipv4address + '\n';
+					browserinfo.value += 'IPv4 reverse: ' + ipv4reverse + '\n';
+					browserinfo.value += 'IPv6 address: ' + ipv6address + '\n';
+					browserinfo.value += 'IPv6 reverse: ' + ipv6reverse + '\n';
 					
 					//Events support
 					var events = new Array();
@@ -159,23 +159,23 @@ JavaScript enabled: no</textarea>
 					if (typeof document.attachEvent != 'undefined') {
 						events.push('attachEvent');
 					}
-					browserinfo.innerHTML += 'Events support: ' + events.join(', ') + '\n';
+					browserinfo.value += 'Events support: ' + events.join(', ') + '\n';
 
 					// hasOwnProperty support
-					browserinfo.innerHTML += 'hasOwnProperty support: ' + (typeof Object.hasOwnProperty == 'undefined'?'no':'yes') + '\n';
+					browserinfo.value += 'hasOwnProperty support: ' + (typeof Object.hasOwnProperty == 'undefined'?'no':'yes') + '\n';
 
 					// XPath support
-					browserinfo.innerHTML += 'XPath support: ' + (typeof document.evaluate == 'undefined'?'no':'yes') + '\n';
+					browserinfo.value += 'XPath support: ' + (typeof document.evaluate == 'undefined'?'no':'yes') + '\n';
 
 					// JSON support
-					browserinfo.innerHTML += 'JSON support: ' + (typeof JSON == 'undefined'?'no':'yes') + '\n';
+					browserinfo.value += 'JSON support: ' + (typeof JSON == 'undefined'?'no':'yes') + '\n';
 					
 					// DOM support
-					browserinfo.innerHTML += 'Native getElementsByClassName support: ' +
+					browserinfo.value += 'Native getElementsByClassName support: ' +
 						                     (typeof document.getElementsByClassName == 'undefined'?'no':'yes') + '\n';
 										
 					// AJAX support
-					browserinfo.innerHTML += 'XHR support: ';
+					browserinfo.value += 'XHR support: ';
 					var xhr = new Array();
 					try {
 						new ActiveXObject("Msxml2.XMLHTTP.6.0");
@@ -193,7 +193,7 @@ JavaScript enabled: no</textarea>
 						new XMLHttpRequest();
 						xhr.push('XMLHttpRequest');
 					} catch (e) {}
-					browserinfo.innerHTML += xhr.join(', ') + '\n';
+					browserinfo.value += xhr.join(', ') + '\n';
 
 					// CSS transitions
 					var transitions = new Array();
@@ -209,24 +209,24 @@ JavaScript enabled: no</textarea>
 					if (typeof document.getElementsByTagName('body')[0].style.KhtmlTransition != 'undefined') {
 						transitions.push('khtml');
 					}
-					browserinfo.innerHTML += 'CSS transitions support: ' + transitions.join(', ') + '\n';
+					browserinfo.value += 'CSS transitions support: ' + transitions.join(', ') + '\n';
 
 					// Websockets support
-					browserinfo.innerHTML += 'Websockets support: ' + (typeof(WebSocket) == 'undefined'?'no':'yes') + '\n';
+					browserinfo.value += 'Websockets support: ' + (typeof(WebSocket) == 'undefined'?'no':'yes') + '\n';
 				</script>
 				<script type="text/javascript" src="swfobject/swfobject.js"></script>
 				<script type="text/javascript">
 					
 					// Flash support
 					var flashver = swfobject.getFlashPlayerVersion();
-					browserinfo.innerHTML += 'Flash version: ' + [flashver.major, flashver.minor, flashver.release].join('.') + '\n';
+					browserinfo.value += 'Flash version: ' + [flashver.major, flashver.minor, flashver.release].join('.') + '\n';
 					
-					browserinfo.innerHTML = browserinfo.innerHTML.replace(/(\r\n|\r|\n)/g, '\r\n');
+					browserinfo.value = browserinfo.value.replace(/(\r\n|\r|\n)/g, '\r\n');
 				</script>
 				<script type="text/javascript" src="deployJava.js"></script>
 				<script type="text/javascript">
 					var jres =deployJava.getJREs();
-					browserinfo.innerHTML += 'Installed Java version(s): ' + jres.join(', ');
+					browserinfo.value += 'Installed Java version(s): ' + jres.join(', ');
 				</script>
 			</div>
 		</div>
