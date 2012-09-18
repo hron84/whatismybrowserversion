@@ -69,6 +69,8 @@ IP address: <?php echo(htmlspecialchars($_SERVER['REMOTE_ADDR'])); ?>
 
 Reverse DNS: <?php echo(htmlspecialchars(gethostbyaddr($_SERVER['REMOTE_ADDR']))); ?>
 
+DoNotTrack: <?php echo (array_key_exists('HTTP_DNT', $_SERVER) && $_SERVER['HTTP_DNT'] == 1) ? "yes" : "no" ?>
+
 JavaScript enabled: no</textarea>
 				<script type="text/javascript">
 					var ipv4address = '';
