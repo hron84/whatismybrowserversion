@@ -166,6 +166,11 @@ JavaScript enabled: no
 					
 					browserinfo.innerHTML = browserinfo.innerHTML.replace(/(\r\n|\r|\n)/g, '\r\n');
 				</script>
+				<script type="text/javascript" src="deployJava.js"></script>
+				<script type="text/javascript">
+					var jres =deployJava.getJREs();
+					browserinfo.innerHTML += 'Installed Java version(s): ' + jres.join(', ');
+				</script>
 			</div>
 		</div>
 		<h2>What is this site?</h2>
