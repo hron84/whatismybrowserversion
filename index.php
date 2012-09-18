@@ -27,7 +27,34 @@
 			h2 {
 				margin-top:21px;
 			}
-			
+
+			#browsername {
+				height: 16px;
+				margin-top: 21px;
+				margin-bottom: 21px;
+				font-size: medium;
+				font-weight: bold;
+				padding-left: 20px;
+				background-repeat: no-repeat;
+				background-position: left;
+			}
+
+			#browsername.firefox {
+				background-image: url(firefox.png);
+			}
+
+			#browsername.chrome {
+				background-image: url(chrome.png);
+			}
+
+			#browsername.msie {
+				background-image: url(msie.png);
+			}
+
+			#browsername.safari {
+				background-image: url(safari.png);
+			}
+
 			#textcontainer {
 				position:relative;
 				height:360px;
@@ -54,10 +81,37 @@
 				outline:0;
 			}
 		</style>
+		<script>
+			function getRealBrowser() {
+				var retobj = {};
+				var ua = navigator.userAgent;
+				if(match = ua.match(/Firefox[\s\/]([\d+\.]+)/)) {
+					retobj.name = "Mozilla Firefox " + match[1];
+					retobj.cssClass = 'firefox';
+				} else if(match = ua.match(/Chrome\/([\d+\.]+)/)) {
+					retobj.name = "Google Chrome " + match[1];
+					retobj.cssClass = "chrome";
+				} else if(match = ua.match(/MSIE ([\d+\.]+)/)) {
+					retobj.name= "Microsoft Internet Explorer " + match[1];
+					retobj.cssClass = "msie";
+				} else if(match = ua.match(/Safari[\s\/]([\d+\.]+)/)) {
+					retobj.name = "Apple Safari " + match[1];
+					retobj.cssClass = "safari";
+				}
+				return retobj;
+			}
+		</script>
 	</head>
 
 	<body>
 		<h1>What Is My Browser Version?</h1>
+		<div id="browsername"></div>
+		<script type="text/javascript">
+			browser = getRealBrowser();
+			browserDiv = document.getElementById("browsername");
+			browserDiv.innerHTML = browser.name;
+			browserDiv.className = browser.cssClass;
+		</script>
 		<p>Please send the following information to the customer support:</p>
 		<div id="textcontainer">
 			<div id="textcontainer2">
