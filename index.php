@@ -223,12 +223,42 @@ JavaScript enabled: no</textarea>
 					var flashver = swfobject.getFlashPlayerVersion();
 					browserinfo.value += 'Flash version: ' + [flashver.major, flashver.minor, flashver.release].join('.') + '\n';
 					
-					browserinfo.value = browserinfo.value.replace(/(\r\n|\r|\n)/g, '\r\n');
 				</script>
 				<script type="text/javascript" src="deployJava.js"></script>
 				<script type="text/javascript">
 					var jres =deployJava.getJREs();
-					browserinfo.value += 'Installed Java version(s): ' + jres.join(', ');
+					browserinfo.value += 'Installed Java version(s): ' + jres.join(', ') + '\n';
+					
+					// Timezone offset detection
+					var getGMTOffset = function(time) {
+						var time1 = time;
+						var time2 = new Date(time1.toGMTString().substring(0, time1.toGMTString().lastIndexOf(" ")));
+						var offset = (time1.getTime() - time2.getTime()) / 1000;
+						return offset;
+					}
+					var detectTZ = function() {
+						var currentDate   = new Date();
+						var januaryoffset = getGMTOffset(new Date(currentDate.getFullYear(), 0, 1, 0, 0, 0, 0));
+						var juneoffset    = getGMTOffset(new Date(currentDate.getFullYear(), 6, 1, 0, 0, 0, 0));
+						var currentoffset = getGMTOffset(new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay(), 0, 0, 0, 0));
+						var dst;
+						if (januaryoffset == juneoffset) {
+							dst = false;
+						} else {
+						    dst = true;
+						}
+						return {
+							currentOffset: currentoffset,
+							januaryOffset: januaryoffset,
+							juneOffset: juneoffset,
+							dst: dst
+						};
+					}
+					var tz = detectTZ();
+					browserinfo.value += 'Current timezone offset: ' + tz.currentOffset + '\n';
+					browserinfo.value += 'DST: ' + (tz.dst?'yes':'no') + '\n';
+					
+					browserinfo.value = browserinfo.value.replace(/(\r\n|\r|\n)/g, '\r\n');
 				</script>
 			</div>
 		</div>
