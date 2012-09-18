@@ -163,6 +163,8 @@ JavaScript enabled: no
 					// Flash support
 					var flashver = swfobject.getFlashPlayerVersion();
 					browserinfo.innerHTML += 'Flash version: ' + [flashver.major, flashver.minor, flashver.release].join('.') + '\n';
+					
+					browserinfo.innerHTML = browserinfo.innerHTML.replace(/(\r\n|\r|\n)/g, '\r\n');
 				</script>
 			</div>
 		</div>
