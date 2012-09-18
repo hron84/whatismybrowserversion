@@ -95,7 +95,7 @@ JavaScript enabled: no
 					browserinfo.innerHTML += 'IPv6 reverse: ' + ipv6reverse + '\n';
 					
 					//Events support
-					var events = Array();
+					var events = new Array();
 					if (typeof document.addEventListener != 'undefined') {
 						events.push('addEventListener');
 					}
@@ -139,7 +139,7 @@ JavaScript enabled: no
 					browserinfo.innerHTML += xhr.join(', ') + '\n';
 
 					// CSS transitions
-					var transitions = array();
+					var transitions = new Array();
 					if (typeof document.getElementsByTagName('body')[0].style.transitionProperty != "undefined") {
 						transitions.push('native');
 					}
