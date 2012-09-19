@@ -6,86 +6,6 @@
 		<meta name="og:description" content="This site has been created to help customer support determine your exact
 			  browser and operating system for tracking down bugs." />
 		<meta name="og:url" content="http://www.whatismybrowserversion.com/" />
-		<style>
-			* {
-				margin:0;
-				padding:0;
-			}
-			
-			body {
-				padding:10px;
-				font-size:12px;
-				line-height:1.5em;
-				font-family:"Verdana","sans-serif";
-			}
-			
-			h1 {
-				font-size:18px;
-				line-height:21px;
-			}
-			
-			h2 {
-				margin-top:21px;
-			}
-
-			#browsername {
-				height: 16px;
-				margin-top: 21px;
-				margin-bottom: 21px;
-				font-size: medium;
-				font-weight: bold;
-				padding-left: 20px;
-				background-repeat: no-repeat;
-				background-position: left;
-			}
-
-			#browsername.firefox {
-				background-image: url(firefox.png);
-			}
-
-			#browsername.chrome {
-				background-image: url(chrome.png);
-			}
-
-			#browsername.msie {
-				background-image: url(msie.png);
-			}
-
-			#browsername.safari {
-				background-image: url(safari.png);
-			}
-
-			#browsername.opera {
-				background-image: url(opera.png);
-			}
-
-			#textcontainer {
-				position:relative;
-				height:360px;
-				border-radius:10px;
-				border:1px solid #cfcfcf;
-				padding:10px;
-				overflow:visible;
-			}
-
-			#textcontainer2 {
-				position:relative;
-				overflow:visible;
-			}
-
-			textarea {
-				border:0;
-				width:100%;
-				overflow:visible;
-				display:block;
-				resize:none;
-				height: 360px;
-			}
-
-			textarea:focus {
-				outline:0;
-			}
-		</style>
 		<script>
 			function getRealBrowser() {
 				var retobj = {};
@@ -223,7 +143,7 @@ JavaScript enabled: no</textarea>
 					// Websockets support
 					browserinfo.value += 'Websockets support: ' + (typeof(WebSocket) == 'undefined'?'no':'yes') + '\n';
 				</script>
-				<script type="text/javascript" src="swfobject/swfobject.js"></script>
+				<script type="text/javascript" src="js/swfobject/swfobject.js"></script>
 				<script type="text/javascript">
 					
 					// Flash support
@@ -231,7 +151,7 @@ JavaScript enabled: no</textarea>
 					browserinfo.value += 'Flash version: ' + [flashver.major, flashver.minor, flashver.release].join('.') + '\n';
 					
 				</script>
-				<script type="text/javascript" src="deployJava.js"></script>
+				<script type="text/javascript" src="js/deployJava.js"></script>
 				<script type="text/javascript">
 					var jres =deployJava.getJREs();
 					browserinfo.value += 'Installed Java version(s): ' + jres.join(', ') + '\n';
