@@ -143,6 +143,7 @@ JavaScript enabled: no</textarea>
 					// Websockets support
 					browserinfo.value += 'Websockets support: ' + (typeof(WebSocket) == 'undefined'?'no':'yes') + '\n';
 				</script>
+
 				<script type="text/javascript" src="js/swfobject/swfobject.js"></script>
 				<script type="text/javascript">
 					
@@ -151,10 +152,38 @@ JavaScript enabled: no</textarea>
 					browserinfo.value += 'Flash version: ' + [flashver.major, flashver.minor, flashver.release].join('.') + '\n';
 					
 				</script>
+
 				<script type="text/javascript" src="js/deployJava.js"></script>
 				<script type="text/javascript">
 					var jres =deployJava.getJREs();
 					browserinfo.value += 'Installed Java version(s): ' + jres.join(', ') + '\n';
+				</script>
+
+				<script type="text/javascript">
+					// .NET support
+					var netsdks = new Array();
+					var sdkraw = navigator.userAgent.match(/\.NET CLR\s([\d\.]+)/g);
+					if(sdkraw.length > 0) {
+						for(i = 0; i < sdkraw.length; i++) {
+							sdk = sdkraw[i];
+							netsdks.push(sdk.split(' ')[2]);
+						}
+					}
+
+					// .NET 4.0 changed the format of the UA string fingerprint 
+					sdkraw = navigator.userAgent.match(/\.NET[\d+\.A-Z]+/g);
+					if(sdkraw.length > 0) {
+						for(i = 0; i < sdkraw.length; i++) {
+							sdk = sdkraw[i];
+							netsdks.push(sdk.replace(/\.NET/, ""));
+						}
+					}
+					if(netsdks.length > 0) {
+						browserinfo.innerHTML += 'Installed Microsoft .NET framework versions: ' + netsdks.join(', ');
+					}
+				</script>
+
+				<script type="text/javascript">
 					
 					// Timezone offset detection
 					var getGMTOffset = function(time) {
@@ -186,29 +215,6 @@ JavaScript enabled: no</textarea>
 					browserinfo.value += 'DST: ' + (tz.dst?'yes':'no') + '\n';
 					
 					browserinfo.value = browserinfo.value.replace(/(\r\n|\r|\n)/g, '\r\n');
-				</script>
-				<script type="text/javascript">
-					// .NET support
-					var netsdks = new Array();
-					var sdkraw = navigator.userAgent.match(/\.NET CLR\s([\d\.]+)/g);
-					if(sdkraw.length > 0) {
-						for(i = 0; i < sdkraw.length; i++) {
-							sdk = sdkraw[i];
-							netsdks.push(sdk.split(' ')[2]);
-						}
-					}
-
-					// .NET 4.0 changed the format of the UA string fingerprint 
-					sdkraw = navigator.userAgent.match(/\.NET[\d+\.A-Z]+/g);
-					if(sdkraw.length > 0) {
-						for(i = 0; i < sdkraw.length; i++) {
-							sdk = sdkraw[i];
-							netsdks.push(sdk.replace(/\.NET/, ""));
-						}
-					}
-					if(netsdks.length > 0) {
-						browserinfo.innerHTML += 'Installed Microsoft .NET framework versions: ' + netsdks.join(', ');
-					}
 				</script>
 			</div>
 		</div>
