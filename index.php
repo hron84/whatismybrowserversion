@@ -55,6 +55,10 @@
 				background-image: url(safari.png);
 			}
 
+			#browsername.opera {
+				background-image: url(opera.png);
+			}
+
 			#textcontainer {
 				position:relative;
 				height:360px;
@@ -98,6 +102,9 @@
 				} else if(match = ua.match(/Safari[\s\/]([\d+\.]+)/)) {
 					retobj.name = "Apple Safari " + match[1];
 					retobj.cssClass = "safari";
+				} else if(match = ua.match(/Opera[\s\/]([\d+\.]+)/)) {
+					retobj.name = "Opera " + match[1];
+					retobj.cssClass = "opera";
 				}
 				return retobj;
 			}
