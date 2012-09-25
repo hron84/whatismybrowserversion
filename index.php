@@ -6,7 +6,8 @@
 		<meta name="og:description" content="This site has been created to help customer support determine your exact
 			  browser and operating system for tracking down bugs." />
 		<meta name="og:url" content="http://www.whatismybrowserversion.com/" />
-		<script>
+		<link href="css/main.css" rel="stylesheet" type="text/css" />
+		<script type="tex/javascript">
 			function getRealBrowser() {
 				var retobj = {};
 				var ua = navigator.userAgent;
